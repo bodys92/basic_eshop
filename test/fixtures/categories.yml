@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: "nabytek"
+  title: "Nabytek"
+  order_no: 1
+  hidden: false
+  category_id: nil
+
+two:
+  url: "obyvaci-pokoj"
+  title: "Obyvaci pokoj"
+  order_no: 3
+  hidden: false
+  category_id: 1
+
+three:
+  url: "koupelny"
+  title: "Koupelny"
+  order_no: 2
+  hidden: false
+  category_id: 1
+
+four:
+  url: "zimni"
+  title: "Zimni"
+  order_no: 5
+  hidden: false
+  category_id: 5
+
+five:
+  url: "obleceni"
+  title: "Obleceni"
+  order_no: 4
+  hidden: false
+  category_id: nil
+

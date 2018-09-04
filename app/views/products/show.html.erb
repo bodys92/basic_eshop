@@ -1,0 +1,64 @@
+<% provide(:title, @product.title)%>
+
+<div class="row">
+    <div class="my-auto col-md-6">  
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" 
+        class="img-fluid" alt="">
+    </div>
+
+    <div class="col-md-6">  
+        <div class="p-4">
+            <div class="col-md-12">
+                <h1>
+                    <%= @product.title %>
+                </h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <% @cat.each do |c| %>
+                        <%= content_tag(:span, c.title, class: "badge badge-primary") %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <div class="col-md-6">
+                    <div class="small">
+                        <span>Old price:</span>
+                        <span class="old_price"><%= @product.old_price %>$</span>
+                    </div>
+            
+                    <p>Price: <%= @product.price %>$</p>
+                </div>
+
+                <div class="co-md-6">
+                    <div class="small">
+                        <div>code: <%= @product.code %></div>
+                        <div>stock: <%= @product.stock %> pcs</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <%= link_to "Buy now!", root_path, class: "btn btn-block btn-lg btn-primary" %>
+</div>
+            <div class="mt-2 lead font-weight-bold">
+                Description:
+            </div>
+            <p>
+                <%= @product.short_description %>
+            </p>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="row justify-content-md-center">
+    <div class="col-md-6 text-center">    
+        <h4 class="my-4 h4"y>
+            Additional info:
+        </h4>
+        <p>
+        <%= @product.description%>
+        </p>
+    </div>
+</div>

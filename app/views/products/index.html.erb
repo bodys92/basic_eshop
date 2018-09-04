@@ -1,0 +1,17 @@
+Find me in views/products/index.html.erb
+
+<% provide(:title, 'All Products') %>
+
+<h1>All products</h1>
+
+<div class="paginate_wrapper">
+    <%= will_paginate %>
+
+    <div class="row">
+        <%= render @products%>
+    </div>
+
+    <%= will_paginate %>
+
+<div>
+

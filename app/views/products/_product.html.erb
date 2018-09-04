@@ -1,0 +1,20 @@
+<div class="col-md-4 text-center col-sm-6 col-xs-6 pt-4">
+    <div class="border thumbnail">
+    <%= link_to image_tag("https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg",
+     alt: "Product Image", class: "img-fluid"), product%>
+        <div class="caption">
+            <h4><%=link_to product.title, product%></h4>
+            <p><%=product.short_description[0..30]%></p>
+            <div class="row px-4">
+                <div class="col">
+                    <p><%=product.price%>$</p>
+                    <%=number_field_tag 'quantity', '1', min: 1, class:"form-control text-center" %>
+                </div>
+                <div class="col">
+                    <p><%=product.old_price%>$</p>
+                    <%= link_to "Buy now!", product, class: "btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

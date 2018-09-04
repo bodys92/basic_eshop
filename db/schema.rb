@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_09_134259) do
+ActiveRecord::Schema.define(version: 2018_08_16_113637) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "url"
+    t.string "title"
+    t.integer "order_no"
+    t.boolean "hidden", default: true
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_categories_on_category_id"
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"
@@ -20,6 +31,32 @@ ActiveRecord::Schema.define(version: 2018_08_09_134259) do
     t.string "picture"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "product_categories", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_product_categories_on_category_id"
+    t.index ["product_id"], name: "index_product_categories_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "code"
+    t.string "url"
+    t.string "title"
+    t.string "short_description"
+    t.text "description"
+    t.decimal "price", precision: 10, scale: 2
+    t.decimal "old_price", precision: 10, scale: 2
+    t.integer "rating_sum"
+    t.integer "ratings"
+    t.integer "stock"
+    t.integer "images_count"
+    t.boolean "hidden"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|

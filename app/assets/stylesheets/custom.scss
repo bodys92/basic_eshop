@@ -1,9 +1,11 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+$gray-light: #eaeaea;
+$gray: #eaeaea;
+$gray-darker: #eaeaea;
+$gray-lighter:  #eaeaea;
+$state-danger-text: red;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -14,7 +16,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 70px;
 }
 
 section {
@@ -36,7 +38,7 @@ textarea {
 
 .debug_dump {
   clear: both;
-  float: left;
+  float: none;
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
@@ -82,7 +84,7 @@ p {
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-    color: white;
+    color: $gray;
     text-decoration: none;
   }
 }
@@ -209,12 +211,6 @@ input {
   }
 }
 
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
 
 .checkbox {
   margin-top: -10px;
@@ -287,4 +283,13 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.old_price {
+  color: red;
+  text-decoration: line-through	;
 }

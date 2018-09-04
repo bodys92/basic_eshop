@@ -4,6 +4,8 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   
   def setup
       @base_title = "Sample App"
+      @admin_user = users(:tester)
+      @basic_user = users(:flash)
   end
   
   test "should get root" do
@@ -29,4 +31,15 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", "Contact | #{@base_title}"
   end
 
+  test "shoud be redirected when guest isnt logged" do
+    get admin_path
+    assert_redirected_to login_url
+  end
+
+  test "shoud be redirected when user isnt admin" do
+    log_in_as(@basic_user)
+    get admin_path
+    assert_redirected_to root_url
+  end
 end
+

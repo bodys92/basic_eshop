@@ -1,0 +1,42 @@
+<%= form_for(@product) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :code %>
+  <%= f.text_field :code, class: 'form-control' %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url, class: 'form-control' %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :short_description %>
+  <%= f.text_field :short_description, class: 'form-control' %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: 'form-control' %>
+
+  <span class="picture">
+    <%= f.label :picture %>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </span>
+
+  <%= f.label :category_id %>
+  <%= fields_for :product_categories do |g| %>
+      <% arr = Category.all.order(:order_no).map{ |item| [item.title, item.id] } %>
+      <%= g.select(:category_id, options_for_select(arr, selected = 1), 
+                    {include_hidden: false, include_blank: false},{multiple: true, size: 8}) %>
+  <% end %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price, {class: 'form-control', step: 0.1} %>
+
+  <%= f.label :old_price %>
+  <%= f.number_field :old_price, {class: 'form-control', value: 0}%>
+
+  <%= f.label :stock %>
+  <%= f.number_field :stock, {class: 'form-control', value: 0}%>
+
+  <%= f.submit yield(:btn_text), class: "btn btn-primary" %>
+<% end %>
+
